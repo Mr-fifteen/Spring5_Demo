@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--配置 User 对象创建-->
+    <bean id="user" class="com.fifteen.spring.xml.User"></bean>
+
+    <bean id="book" class="com.fifteen.spring.xml.Book">
+        <property name="name" value="天龙八部"/>
+        <property name="bauthor" value="金庸"/>
+    </bean>
+    <bean id="pBook" class="com.fifteen.spring.xml.PBook" p:id="1" p:name="7天速成"/>
+
+
+</beans>

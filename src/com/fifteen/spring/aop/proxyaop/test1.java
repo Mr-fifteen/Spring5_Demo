@@ -11,23 +11,31 @@ import java.util.Arrays;
 /**
  * @Author Mr.fifteen
  * @Date 2023/11/4  22:03
+ * JDK 动态代理
  * 通过Proxy实现动态代理练习
  */
 public class test1 {
     public static void main(String[] args) {
         //创建接口代理对象类
         Class[] interfaces = {User.class};
-        UserImpl user = new UserImpl();
-        User newUser = (User) Proxy.newProxyInstance(test1.class.getClassLoader(), interfaces, new UserProxy(user));
+        UserImpl userImpl = new UserImpl();
+        /**
+         *  JDK 动态代理
+         * 第一参数，类加载器
+         * 第二参数，增强方法所在的类，这个类实现的接口，支持多个接口
+         * 第三参数，实现这个接口 InvocationHandler，创建代理对象，写增强的部分
+         */
+        User newUser = (User) Proxy.newProxyInstance(test1.class.getClassLoader(), interfaces, new UserProxy(userImpl));
         int i = newUser.add(2, 3);
-        System.out.println("result:"+i);
+        System.out.println("方法返回result:"+i);
+
 
         //匿名内部类写法
         User newUser2 = (User) Proxy.newProxyInstance(test1.class.getClassLoader(), interfaces, new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 System.out.println("匿名内部类发执行代理:"+method.getName()+",参数:"+Arrays.toString(args));
-                Object invoke = method.invoke(user,args);
+                Object invoke = method.invoke(userImpl,args);
                 System.out.println("匿名内部类发执行代理结束..."+invoke);
                 return invoke;
             }

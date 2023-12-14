@@ -16,9 +16,16 @@
         1 如果扫描多个包，多个包使用逗号隔开
         2 扫描包上层目录
     -->
-    <context:component-scan base-package="com.fifteen.spring.aop"></context:component-scan>
+<!--    <context:component-scan base-package="com.fifteen.spring.aop"></context:component-scan>-->
 
     <!-- 开启 Aspect注解 生成代理对象-->
     <!-- 在增强类的里面，在作为通知方法上面添加通知类型注解，使用切入点表达式配置 -->
-    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+<!--    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>-->
+
+    <!-- 开启注解扫描 -->
+    <!--
+        1 如果扫描多个包，多个包使用逗号隔开
+        2 扫描包上层目录
+    -->
+    <context:component-scan base-package="com.fifteen.spring.aop"></context:component-scan>
 </beans>
